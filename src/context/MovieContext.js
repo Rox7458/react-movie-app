@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { createContext } from 'react'
 
-const MovieContext = () => {
+
+export const MovieContextt=createContext()
+
+
+const MovieContext = ({children}) => {
   return (
-    <div>MovieContext</div>
+    <MovieContextt.Provider value={{}}>
+
+      {children}
+    </MovieContextt.Provider>
   )
 }
 
