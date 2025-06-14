@@ -1,30 +1,18 @@
-import {
-  Disclosure,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from "@headlessui/react";
- import { Link } from "react-router-dom";
+import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 import avatar from "../assets/icons/avatar.png";
 import { useContext } from "react";
 import { AuthContextt } from "../context/AuthContext";
 
-
 export default function Navbar() {
+  const { cikis, currentUser } = useContext(AuthContextt);
 
-const {cikis,currentUser}=useContext(AuthContextt)
+  console.log(currentUser);
 
-console.log(currentUser);
-
-  //tailwindui.com/components/preview adresinden navbar aldık ve navigation, mobile menu button, open, Disclosure.Panel sildik
   return (
     <>
-      <Disclosure
-        as="nav"
-        className="bg-neutral-100 dark:bg-gray-900 dark:text-white fixed top-0 w-full z-20 "
-      >
+      <Disclosure as="nav" className="bg-neutral-100 dark:bg-gray-900 dark:text-white fixed top-0 w-full z-20 ">
         <div className="mx-auto  px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
             <Link className="pr-2 text-2xl font-semibold" to="/">
@@ -33,7 +21,7 @@ console.log(currentUser);
 
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               {/* kullanıcı giriş yaptıysa displayName ekranda görünsün */}
-              <h5 className="mr-2 capitalize ">{currentUser?.displayName }</h5>
+              <h5 className="mr-2 capitalize ">{currentUser?.displayName}</h5>
 
               {/* Profile dropdown */}
               <Menu as="div" className="relative">
@@ -42,7 +30,7 @@ console.log(currentUser);
                     <span className="sr-only">Open user menu</span>
                     <img
                       alt=""
-                      src={currentUser?.photoURL || avatar }
+                      src={currentUser?.photoURL || avatar}
                       className="h-8 w-8 rounded-full"
                       referrerPolicy="no-referrer"
                     />
@@ -54,18 +42,12 @@ console.log(currentUser);
                 >
                   <>
                     <MenuItem>
-                      <Link
-                        to="/register"
-                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
-                      >
+                      <Link to="/register" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                         Register
                       </Link>
                     </MenuItem>
                     <MenuItem>
-                      <Link
-                        to="/login"
-                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
-                      >
+                      <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                         Login
                       </Link>
                     </MenuItem>
@@ -74,7 +56,7 @@ console.log(currentUser);
                   <MenuItem>
                     <span
                       className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 cursor-pointer"
-                      onClick={()=>cikis()}
+                      onClick={() => cikis()}
                     >
                       Log out
                     </span>

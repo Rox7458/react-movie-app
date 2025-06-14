@@ -19,11 +19,7 @@ const MovieContext = ({ children }) => {
       .finally(() => setLoading(false));
   }, []);
 
-  return (
-    <MovieContextt.Provider value={{ filmler,loading }}>
-      {children}
-    </MovieContextt.Provider>
-  );
+  return <MovieContextt.Provider value={{ filmler, loading }}>{children}</MovieContextt.Provider>;
 };
 
 export default MovieContext;

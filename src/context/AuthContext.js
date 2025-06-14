@@ -18,14 +18,12 @@ const AuthContext = ({ children }) => {
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState();
 
-  //!bu sayfaya ister login ister register ister google için gelin, sadece bir seferliğine user kontrolü yapan fonksiyonu çalıştır
-
   useEffect(() => {
     userTakip();
   }, []);
 
   //!register
-  //!register için (sitede zincir yapılı fetch işlemi var biz burada async await i tercih ettik)
+
   // https://firebase.google.com/docs/auth/web/start?hl=tr
 
   const createKullanici = async (email, password, displayName) => {
@@ -34,8 +32,6 @@ const AuthContext = ({ children }) => {
     toastSuccess("register işlemi başarılı");
 
     navigate("/");
-
-    //? USERTAKİPTEN SONRA -----kullanıcı profilini güncellemek için kullanılan firebase metodu, login logout da userTakip sayesinde güncelleniyor ama register da isim güncellemesi yok, o da bu şekilde oluyor.alttakini yazmazsam (register ile girdiğimde) navbarda displayName i göremem. alttakini yazmazsam sadece google ile girersem görürüm
 
     updateProfile(auth.currentUser, {
       displayName: displayName,
@@ -84,8 +80,6 @@ const AuthContext = ({ children }) => {
       });
   };
 
-  //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu. bir kere çalıştır login logout takip eder.login ile bilgiler gelir bizde burada currentUser ın içine atarız, signout olunca bilgiler gider bizde currentUser ın içini güncelleriz (register ve logindeki email vs ye navbardan ulaşabilmek için). google ile giriş yapınca user ile displayname gelir ama email ile girecekseniz en üstte update kodunu firebase den çağırmalısınız.(userTakip)
-
   const userTakip = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -102,9 +96,7 @@ const AuthContext = ({ children }) => {
   };
 
   return (
-    <AuthContextt.Provider
-      value={{ createKullanici, giris, googleGiris, cikis,currentUser }}
-    >
+    <AuthContextt.Provider value={{ createKullanici, giris, googleGiris, cikis, currentUser }}>
       {children}
     </AuthContextt.Provider>
   );
