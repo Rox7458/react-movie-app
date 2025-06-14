@@ -1,17 +1,24 @@
+# Movie Website
 
+The website presents latest movies.
 
-## Description
+## Project Overview
 
-Project aims to create a Movie App.
+This project showcases:
 
-## Problem Statement
+- Project let users view latest movies with details by registering or logging.
 
-- We are adding a new project to our portfolios. So you and your colleagues have started to work on the project.
+## Features
+
+- **Content Sections:**
+  - **Main:** Displays the movies.
+  - **LogIn:** Displays logging to see the movie details.
+  - **Register:** Basicly registering process.
 
 ## Project Skeleton
 
 ```
-006 - Movie App (folder)
+- Movie App (folder)
 |
 |----readme.md         # Given to the students (Definition of the project)
 SOLUTION
@@ -40,3 +47,15 @@ SOLUTION
 ├── .env
 └── yarn.lock
 ```
+
+## Preview
+
+Here’s a preview of the project in action:
+
+![alt text](REC-20250614170938-ezgif.com-video-to-gif-converter.gif)
+
+## Technologies Used
+
+- **FIREBASE**: For logging.
+- **TMDB_API**: For providing data.
+- **TAILWIND**: For styling.
